@@ -4,7 +4,7 @@
 Summary:	.NET support for iPods
 Name:		dotnet-ipod-sharp
 Version:	0.6.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://banshee-project.org/files/ipod-sharp/ipod-sharp-%{version}.tar.gz
@@ -48,5 +48,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_prefix}/lib/ipod-sharp
+%{_libdir}/ipod-sharp
 %{_pkgconfigdir}/ipod-sharp*.pc
