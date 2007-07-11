@@ -1,4 +1,4 @@
-#
+#TODO - patch for lib->lib64 
 %include	/usr/lib/rpm/macros.mono
 #
 Summary:	.NET support for iPods
