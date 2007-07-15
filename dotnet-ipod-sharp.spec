@@ -1,28 +1,37 @@
-#TODO - patch for lib->lib64 
 %include	/usr/lib/rpm/macros.mono
-#
 Summary:	.NET support for iPods
+Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
 Version:	0.6.3
 Release:	3
-License:	GPL
-Group:		Development/Libraries
+# no real license information, just included COPYING
+License:	LGPL v2
+Group:		Libraries
 Source0:	http://banshee-project.org/files/ipod-sharp/ipod-sharp-%{version}.tar.gz
 # Source0-md5:	c35131c3350e686d4a006377c1711834
-BuildRequires:	autoconf
+URL:		http://banshee-project.org/Subprojects/Ipod-sharp
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	dotnet-gtk-sharp2-devel >= 2.0
 BuildRequires:	libipoddevice-devel >= 0.5.0
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 ExcludeArch:	i386
+# can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-ipod-sharp provies support for high level features of Apple's iPod,
+ipod-sharp provides support for high level features of Apple's iPod,
 like support for audio content, including reading and writing of
 the iTunes/iPod database, and syncing music. ipod-sharp also provides
 a CIL wrapper for libipoddevice.
+
+%description -l pl.UTF-8
+ipod-sharp zapewnia obsługę wysokopoziomowych możliwości urządzeń
+Apple iPod, takich jak obsługa danych dźwiękowych wraz z odczytem i
+zapisem baz danych iTunes/iPod oraz synchronizacja muzyki. ipod-sharp
+udostępnia także wrapper CIL dla libipoddevice.
 
 %prep
 %setup -qn ipod-sharp-%{version}
@@ -34,7 +43,7 @@ a CIL wrapper for libipoddevice.
 %{__automake}
 %configure
 
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,5 +57,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_libdir}/ipod-sharp
-%{_pkgconfigdir}/ipod-sharp*.pc
+%{_prefix}/lib/ipod-sharp
+%{_pkgconfigdir}/ipod-sharp.pc
+%{_pkgconfigdir}/ipod-sharp-ui.pc
