@@ -2,21 +2,21 @@
 Summary:	.NET support for iPods
 Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
-Version:	0.6.3
-Release:	5
+Version:	0.8.0
+Release:	1
 # no real license information, just included COPYING
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://banshee-project.org/files/ipod-sharp/ipod-sharp-%{version}.tar.gz
-# Source0-md5:	c35131c3350e686d4a006377c1711834
+# Source0-md5:	ecb58c18599035fca34935a1287584f3
 URL:		http://banshee-project.org/Subprojects/Ipod-sharp
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.0
-BuildRequires:	libipoddevice-devel >= 0.5.0
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
+BuildRequires:	podsleuth
 BuildRequires:	rpmbuild(monoautodeps)
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
@@ -39,9 +39,10 @@ udostępnia także wrapper CIL dla libipoddevice.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I .
 %{__autoconf}
 %{__automake}
+echo foo
 %configure
 
 %{__make} -j1
