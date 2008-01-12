@@ -1,0 +1,10 @@
+--- ipod-sharp-0.8.0/configure.ac.orig	2007-10-17 23:27:51.000000000 +0200
++++ ipod-sharp-0.8.0/configure.ac	2008-01-12 15:13:01.269778424 +0100
+@@ -23,7 +23,6 @@
+ 
+ SHAMROCK_CHECK_MONO_NUNIT
+ 
+-PKG_CHECK_MODULES(PODSLEUTH, podsleuth >= 0.6.0)
+ PKG_CHECK_MODULES(NDESK_DBUS, ndesk-dbus-1.0 ndesk-dbus-glib-1.0)
+ 
+ SHAMROCK_EXPAND_LIBDIR
