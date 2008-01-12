@@ -9,15 +9,17 @@ License:	LGPL v2
 Group:		Libraries
 Source0:	http://banshee-project.org/files/ipod-sharp/ipod-sharp-%{version}.tar.gz
 # Source0-md5:	ecb58c18599035fca34935a1287584f3
+Patch0:		%{name}-dep.patch
 URL:		http://banshee-project.org/Subprojects/Ipod-sharp
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.0
-BuildRequires:	libtool
+BuildRequires:	dotnet-ndesk-dbus-sharp-devel
+BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
-BuildRequires:	podsleuth
 BuildRequires:	rpmbuild(monoautodeps)
+Suggests:	podsleuth >= 0.6.1
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,14 +37,13 @@ zapisem baz danych iTunes/iPod oraz synchronizacja muzyki. ipod-sharp
 udostępnia także wrapper CIL dla libipoddevice.
 
 %prep
-%setup -qn ipod-sharp-%{version}
+%setup -q -n ipod-sharp-%{version}
+%patch0 -p1
 
 %build
-%{__libtoolize}
 %{__aclocal} -I .
 %{__autoconf}
 %{__automake}
-echo foo
 %configure
 
 %{__make} -j1
@@ -60,5 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %{_prefix}/lib/ipod-sharp
+#%files devel
 %{_pkgconfigdir}/ipod-sharp.pc
 %{_pkgconfigdir}/ipod-sharp-ui.pc
+#%{_libdir}/monodoc/sources/ipod-sharp-docs.*
