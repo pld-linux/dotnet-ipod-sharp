@@ -20,6 +20,7 @@ BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
 Suggests:	podsleuth >= 0.6.1
+ExclusiveArch:	%{ix86} %{x8664} alpha arm hppa ia64 mips ppc s390 s390x sparc sparcv9
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
