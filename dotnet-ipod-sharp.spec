@@ -38,6 +38,18 @@ Apple iPod, takich jak obsługa danych dźwiękowych wraz z odczytem i
 zapisem baz danych iTunes/iPod oraz synchronizacja muzyki. ipod-sharp
 udostępnia także wrapper CIL dla libipoddevice.
 
+%package devel
+Summary:	Development files for ipod-sharp library
+Summary(pl.UTF-8):	Pliki programistyczne biblioteki ipod-sharp
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description devel
+Development files for ipod-sharp library.
+
+%description devel -l pl.UTF-8
+Pliki programistyczne biblioteki ipod-sharp.
+
 %prep
 %setup -q -n ipod-sharp-%{version}
 %patch0 -p1
@@ -57,16 +69,28 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# replace duplicates by symlinks
+cd $RPM_BUILD_ROOT%{_prefix}/lib/ipod-sharp
+for f in *.dll* ; do
+	%{__rm} $f
+	ln -sf ../mono/gac/ipod-sharp*/*/$f $f
+done
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_prefix}/lib/ipod-sharp
-#%files devel
-%{_pkgconfigdir}/ipod-sharp.pc
-%{_pkgconfigdir}/ipod-sharp-ui.pc
+%dir %{_prefix}/lib/ipod-sharp
+%{_prefix}/lib/ipod-sharp/ipod-sharp-firmware.dll*
 %{_prefix}/lib/mono/gac/ipod-sharp
 %{_prefix}/lib/mono/gac/ipod-sharp-ui
-#%{_libdir}/monodoc/sources/ipod-sharp-docs.*
+
+%files devel
+%defattr(644,root,root,755)
+%{_prefix}/lib/ipod-sharp/ipod-sharp.dll*
+%{_prefix}/lib/ipod-sharp/ipod-sharp-ui.dll*
+%{_pkgconfigdir}/ipod-sharp.pc
+%{_pkgconfigdir}/ipod-sharp-ui.pc
+%{_libdir}/monodoc/sources/ipod-sharp-docs.*
