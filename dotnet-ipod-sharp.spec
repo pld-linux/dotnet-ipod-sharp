@@ -3,7 +3,7 @@ Summary:	.NET support for iPods
 Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
 Version:	0.8.0
-Release:	3
+Release:	4
 # no real license information, just included COPYING
 License:	LGPL v2
 Group:		Libraries
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # replace duplicates by symlinks
 cd $RPM_BUILD_ROOT%{_prefix}/lib/ipod-sharp
-for f in *.dll* ; do
+for f in ipod-sharp.dll* ipod-sharp-ui.dll* ; do
 	%{__rm} $f
 	ln -sf ../mono/gac/ipod-sharp*/*/$f $f
 done
