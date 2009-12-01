@@ -2,13 +2,13 @@
 Summary:	.NET support for iPods
 Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
-Version:	0.8.1
+Version:	0.8.5
 Release:	1
 # no real license information, just included COPYING
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://banshee-project.org/files/ipod-sharp/ipod-sharp-%{version}.tar.gz
-# Source0-md5:	c4a13c36acc50bb5c13e5ef953557ea5
+Source0:	http://banshee-project.org/files/ipod-sharp/0.8.5/ipod-sharp-%{version}.tar.bz2
+# Source0-md5:	fb7f53f64d825847d578a637cd48dd41
 Patch0:		%{name}-dep.patch
 Patch1:		%{name}-gac.patch
 URL:		http://banshee-project.org/Subprojects/Ipod-sharp
