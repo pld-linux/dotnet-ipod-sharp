@@ -3,7 +3,7 @@ Summary:	.NET support for iPods
 Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
 Version:	0.8.5
-Release:	1
+Release:	2
 # no real license information, just included COPYING
 License:	LGPL v2
 Group:		Libraries
@@ -18,6 +18,7 @@ BuildRequires:	dotnet-gtk-sharp2-devel >= 2.0
 BuildRequires:	dotnet-ndesk-dbus-sharp-devel
 BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	mono-csharp >= 1.1.16.1
+BuildRequires:	monodoc >= 2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
 Suggests:	podsleuth >= 0.6.1
@@ -43,6 +44,7 @@ Summary:	Development files for ipod-sharp library
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki ipod-sharp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	monodoc >= 2.6
 
 %description devel
 Development files for ipod-sharp library.
@@ -93,4 +95,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/ipod-sharp/ipod-sharp-ui.dll*
 %{_pkgconfigdir}/ipod-sharp.pc
 %{_pkgconfigdir}/ipod-sharp-ui.pc
-%{_libdir}/monodoc/sources/ipod-sharp-docs.*
+%{_prefix}/lib/monodoc/sources/ipod-sharp-docs.*
