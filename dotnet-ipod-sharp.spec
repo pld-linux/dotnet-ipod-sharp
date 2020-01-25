@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.mono
 Summary:	.NET support for iPods
 Summary(pl.UTF-8):	Obsługa iPodów z poziomu .NET
 Name:		dotnet-ipod-sharp
